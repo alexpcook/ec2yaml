@@ -1,6 +1,10 @@
 import yaml
 
 class EC2Volume():
+    """
+    Encapsulates settings for an AWS EC2 volume.
+    """
+
     def __init__(self, device, size_gb, vol_type, mount):
         self.device = device
         self.size_gb = size_gb
@@ -8,11 +12,19 @@ class EC2Volume():
         self.mount = mount
 
 class EC2User():
+    """
+    Encapsulates settings for an AWS EC2 user.
+    """
+
     def __init__(self, login, ssh_key):
         self.login = login
         self.ssh_key = ssh_key
 
 class EC2Config():
+    """
+    Encapsulates settings for an AWS EC2 instance configuration with two volumes and two users.
+    """
+
     def __init__(self, raw_yaml):
         ec2_settings = raw_yaml['server']
 
