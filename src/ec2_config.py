@@ -25,8 +25,11 @@ class EC2Config():
     Encapsulates settings for an AWS EC2 instance configuration with two volumes and two users.
     """
 
-    def __init__(self, raw_yaml):
-        ec2_settings = raw_yaml['server']
+    def __init__(self, yaml_config_file):
+        with open(yaml_config_file) as f:
+            raw_yaml = f.read()
+        
+        ec2_settings = yaml.safe_load(raw_yaml)['server']
 
         self.instance_type = ec2_settings['instance_type']
         self.ami_type = ec2_settings['ami_type']

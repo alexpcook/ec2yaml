@@ -9,9 +9,7 @@ def test_file_does_not_exist():
     """
     
     with pytest.raises(FileNotFoundError):
-        with open('/some/invalid/path') as f:
-            contents = yaml.safe_load(f.read())
-            config = ec2_config.EC2Config(contents)
+        config = ec2_config.EC2Config('/some/invalid/path')
 
 def test_file_exists_but_is_not_valid_yaml():
     """
@@ -20,9 +18,7 @@ def test_file_exists_but_is_not_valid_yaml():
     """
 
     with pytest.raises(TypeError):
-        with open('tests/test.txt') as f:
-            contents = yaml.safe_load(f.read())
-            config = ec2_config.EC2Config(contents)
+        config = ec2_config.EC2Config('tests/test.txt')
 
 def test_file_with_vaild_yaml():
     """
@@ -30,9 +26,7 @@ def test_file_with_vaild_yaml():
     The instance of the EC2Config class should have all expected properties.
     """
 
-    with open('tests/test.yaml') as f:
-        contents = yaml.safe_load(f.read())
-        config = ec2_config.EC2Config(contents)
+    config = ec2_config.EC2Config('tests/test.yaml')
 
     assert config.instance_type == 't2.micro'
     assert config.ami_type == 'amzn2'
@@ -48,11 +42,11 @@ def test_file_with_vaild_yaml():
 
     assert config.volumes[0].device == '/dev/xvda'
     assert config.volumes[0].size_gb == 10
-    assert config.volumes[0].vol_type == 'ext4'
+    assert config.volumes[0].vol_type == 'gp2'
     assert config.volumes[0].mount == '/'
     assert config.volumes[1].device == '/dev/xvdf'
     assert config.volumes[1].size_gb == 100
-    assert config.volumes[1].vol_type == 'xfs'
+    assert config.volumes[1].vol_type == 'gp3'
     assert config.volumes[1].mount == '/data'
 
     assert len(config.users) == 2
