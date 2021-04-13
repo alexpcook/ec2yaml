@@ -19,6 +19,6 @@ server:
       mount: /data
   users:
     - login: user1
-      ssh_key: --user1 ssh public key goes here-- user1@localhost
+      ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIqwgS+BBVx+043jKGBOFOKpF0MF53hVY22DHPWbIjCXYn3AIJj5smv9zo+YLGO5reZsJ2x69i6C0hqRVtW/wZGs0W8KDMGfvNsdxdufDP3Gcgteu6CiutJDlqxRJK1ICn1L4A9+OclOnKy3fIe3+ol4hJ/mHSM+GiXT983oY0uiTtDQSd8FGbNVP9cg5IOGY/IJ9JYD6eMsewZ0wi90A3JcdZbe9TpziqHNiZpqQcx+dCOZPjNxIgKy4oMiE2UEdpoRtD5ra9bERrSzWdyVYm+Uv3C8Lid1KgV0NK7f1X/T7qAJpFvZb4ZyIFSTSp3jwAj2keKbSc9qv5FR4FxigT user1@localhost
     - login: user2
-      ssh_key: --user2 ssh public key goes here-- user2@localhost
+      ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAawfC68isbzA/w0uiCNndsKCgR6EVxb7VUQOV7NWBsw1QVhX0XJT3lHYJu0jzv2wccVgDwf4fT/G8p5gPbzQkLc11cihBgdnf6HZZ9/5EbJKxSZHiLPEuofABPCw9KhUwyvq8fk8BWggP81W/gZyX1S1orLPztcT66t7Uaem2a21bVM6MJUoUUcWRLGsoNCmUGoaZ5k/AllGSoQ27HUywpDMDEoG+1GrwAjRh5a116b5jkLIhmlPlWzmL+YitCKnTXooAfNkRm4NULxAzCuQilCkBMwa6J2swVbnXK87t4gclJ5QEGC0pCRi3gKMrY7BHyx/WfIdDK6zxspMbc5DN user2@localhost
