@@ -6,6 +6,6 @@ def get_parser():
     Retrieve the YAML configuration file using the 'file' argument.
     """
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument('file', help='the YAML file to use for making the EC2 instances')
+    parser = argparse.ArgumentParser(description='Creates EC2 instances from a basic YAML configuration file')
+    parser.add_argument('file', help='The YAML file to use for making the EC2 instances')
     return parser
