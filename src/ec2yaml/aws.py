@@ -9,7 +9,11 @@ def create_instance(config):
     Creates an EC2 instance from the configuration settings.
     """
 
-    client = boto3.client('ec2')
+    try:
+        client = boto3.client('ec2')
+    except Exception as e:
+        print(f'An error occurred while creating the boto3 client: {e}')
+        sys.exit(1)
 
     ami_id = _get_ami_id(client, config.ami_type, config.architecture, config.root_device_type, config.virtualization_type)
     default_vpc_id = _ensure_default_vpc(client)
@@ -42,7 +46,12 @@ def create_instance(config):
         UserData=_user_data_script(config),
     )
 
-    # todo - print out some useful info once complete
+    ec2 = boto3.resource('ec2')
+    instances = res['Instances']
+
+    for i, instance in enumerate(instances):
+        public_ip = ec2.instance(instance['InstanceId'])
+        print(f'instance {i} public ip address = {public_ip}')
 
 def _get_ami_id(client, ami_type, arch, root_dev_type, virtualization_type):
     """
