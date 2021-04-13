@@ -2,7 +2,7 @@
 ec2yaml
 =======
 
-This program deploys a Linux AWS EC2 instance with two volumes and two users based on a provided YAML configuration file. Note that this program is imperative and not declarative. In other words, each time the program runs, the specified configuration is created. There is no state that remembers past resources that were previously created.
+This program deploys a Linux AWS EC2 instance with two additional non-root volumes and two users based on a provided YAML configuration file. Note that this program is imperative and not declarative. In other words, each time the program runs, the specified configuration is created. There is no state that remembers past resources that were previously created.
 
 Prerequisites
 -------------
