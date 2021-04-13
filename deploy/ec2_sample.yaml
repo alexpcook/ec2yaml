@@ -9,14 +9,14 @@ server:
   min_count: 1
   max_count: 1
   volumes:
-    - device: /dev/xvda
+    - device: /dev/xvdb
       size_gb: 10
       type: ext4
-      mount: /
-    - device: /dev/xvdf
+      mount: /datab
+    - device: /dev/xvdc
       size_gb: 100
       type: xfs
-      mount: /data
+      mount: /datac
   users:
     - login: user1
       ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIqwgS+BBVx+043jKGBOFOKpF0MF53hVY22DHPWbIjCXYn3AIJj5smv9zo+YLGO5reZsJ2x69i6C0hqRVtW/wZGs0W8KDMGfvNsdxdufDP3Gcgteu6CiutJDlqxRJK1ICn1L4A9+OclOnKy3fIe3+ol4hJ/mHSM+GiXT983oY0uiTtDQSd8FGbNVP9cg5IOGY/IJ9JYD6eMsewZ0wi90A3JcdZbe9TpziqHNiZpqQcx+dCOZPjNxIgKy4oMiE2UEdpoRtD5ra9bERrSzWdyVYm+Uv3C8Lid1KgV0NK7f1X/T7qAJpFvZb4ZyIFSTSp3jwAj2keKbSc9qv5FR4FxigT user1@localhost
