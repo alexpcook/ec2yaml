@@ -1,5 +1,3 @@
----
-# This YAML configuration specifies a server with two volumes and two users
 server:
   instance_type: t2.micro
   ami_type: amzn2
