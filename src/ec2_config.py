@@ -2,7 +2,7 @@ import yaml
 
 class EC2Volume():
     """
-    Encapsulates settings for an AWS EC2 volume.
+    Encapsulates settings for an AWS EBS volume.
     """
 
     def __init__(self, device, size_gb, vol_type, mount):
@@ -13,7 +13,7 @@ class EC2Volume():
 
 class EC2User():
     """
-    Encapsulates settings for an AWS EC2 user.
+    Encapsulates settings for an AWS EC2 Linux user.
     """
 
     def __init__(self, login, ssh_key):
@@ -22,7 +22,7 @@ class EC2User():
 
 class EC2Config():
     """
-    Encapsulates settings for an AWS EC2 instance configuration with two volumes and two users.
+    Encapsulates settings for an AWS EC2 instance with two EBS volumes and two users.
     """
 
     def __init__(self, yaml_config_file):
