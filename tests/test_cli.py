@@ -1,6 +1,6 @@
 import pytest
 
-import cli
+from ec2yaml import cli
 
 def test_parser_without_file():
     """

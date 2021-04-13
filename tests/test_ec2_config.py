@@ -1,7 +1,7 @@
 import pytest
 import yaml
 
-import ec2_config
+from ec2yaml import ec2_config
 
 def test_file_does_not_exist():
     """

@@ -1,8 +1,6 @@
-import aws
-import ec2_config
-import cli
+def main():
+    from ec2yaml import aws, cli, ec2_config
 
-if __name__ == '__main__':
     parser = cli.get_parser()
     args = parser.parse_args()
 
