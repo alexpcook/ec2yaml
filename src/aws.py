@@ -2,6 +2,7 @@ import boto3
 import random
 import requests
 import string
+import sys
 
 def create_instance(config):
     """
@@ -10,6 +11,7 @@ def create_instance(config):
 
     client = boto3.client('ec2')
 
+    ami_id = _get_ami_id(client, config.ami_type, config.architecture, config.root_device_type, config.virtualization_type)
     default_vpc_id = _ensure_default_vpc(client)
     key_pair_names = _create_key_pairs(client, config)
 
@@ -27,7 +29,7 @@ def create_instance(config):
     res = client.run_instances(
         BlockDeviceMappings=blockDeviceMappings,
 
-        ImageId='ami-0577b787189839998', # todo - don't hardcode this
+        ImageId=ami_id,
         InstanceType=config.instance_type,
 
         MaxCount=config.max_count,
@@ -41,6 +43,45 @@ def create_instance(config):
     )
 
     # todo - print out some useful info once complete
+
+def _get_ami_id(client, ami_type, arch, root_dev_type, virtualization_type):
+    """
+    Finds an AMI ID given the AMI name, architecture, root device type, and virtualization type.
+    Exits with status code 1 if no AMI ID was found. If more than one AMI ID was found, it selects
+    the first one in the list.
+    """
+
+    res = client.describe_images(
+        Filters=[
+            {
+                'Name': 'name',
+                'Values': [f'{ami_type}*'],
+            },
+            {
+                'Name': 'architecture',
+                'Values': [arch],
+            },
+            {
+                'Name': 'virtualization-type',
+                'Values': [virtualization_type],
+            },
+            {
+                'Name': 'root-device-type',
+                'Values': [root_dev_type],
+            },
+        ],
+    )
+
+    images = res['Images']
+    if len(images) < 1:
+        print(f"""unable to find at least one AMI ID based on search critera:
+    name: {ami_type}*
+    architecture: {arch}
+    virtualization_type: {virtualization_type}
+    root_device_type: {root_dev_type}""")
+        sys.exit(1)
+
+    return images[0]['ImageId']
 
 def _ensure_default_vpc(client):
     """
