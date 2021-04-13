@@ -1,3 +1,4 @@
+import sys
 import yaml
 
 class EC2Volume():
@@ -26,8 +27,12 @@ class EC2Config():
     """
 
     def __init__(self, yaml_config_file):
-        with open(yaml_config_file) as f:
-            raw_yaml = f.read()
+        try:
+            with open(yaml_config_file) as f:
+                raw_yaml = f.read()
+        except FileNotFoundError:
+            print(f'{yaml_config_file} not found')
+            sys.exit(1)
         
         ec2_settings = yaml.safe_load(raw_yaml)['server']
 

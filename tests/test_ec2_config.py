@@ -5,10 +5,10 @@ from ec2yaml import ec2_config
 
 def test_file_does_not_exist():
     """
-    If the EC2 configuration file does not exist, the utility should raise a FileNotFoundError.
+    If the EC2 configuration file does not exist, the utility should raise a SystemExit exception.
     """
     
-    with pytest.raises(FileNotFoundError):
+    with pytest.raises(SystemExit):
         config = ec2_config.EC2Config('/some/invalid/path')
 
 def test_file_exists_but_is_not_valid_yaml():
