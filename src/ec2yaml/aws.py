@@ -50,7 +50,7 @@ def create_instance(config):
     instances = res['Instances']
 
     for i, instance in enumerate(instances):
-        public_ip = ec2.instance(instance['InstanceId'])
+        public_ip = ec2.Instance(instance['InstanceId']).public_ip_address
         print(f'instance {i} public ip address = {public_ip}')
 
 def _get_ami_id(client, ami_type, arch, root_dev_type, virtualization_type):
