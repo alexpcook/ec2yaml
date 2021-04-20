@@ -196,8 +196,6 @@ echo {ssh_key} >> {ssh_auth_keys_file}
 
     return user_data_script_section
 
-    return 
-
 def _mount_volumes(volumes):
     """
     Returns the section of the user data script to configure and mount
