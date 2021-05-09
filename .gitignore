@@ -1,3 +1,6 @@
+# SSH keys directory
+.ssh/
+
 # VSCode settings directory
 .vscode/
 
